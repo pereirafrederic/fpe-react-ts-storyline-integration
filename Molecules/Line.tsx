@@ -1,10 +1,14 @@
 import React, { PureComponent, ReactNode } from 'react'
-import {ILine} from './Iinterface'
+import { ILine } from './Iinterface'
 import Case from '../Atoms/Case'
+import HeaderCase from '../Atoms/HeaderCase'
+import { IHeaderCase } from '../Atoms/Iinterface'
+
 interface IState { }
 interface IProps {
-  line : ILine
- }
+  line: ILine
+  header: IHeaderCase
+}
 
 class Line extends PureComponent<IProps, IState> {
 
@@ -12,14 +16,15 @@ class Line extends PureComponent<IProps, IState> {
 
   render() {
 
-    const {cases } = this.props.line
+    const { header } = this.props
+    const { cases } = this.props.line;
+    const domCases = cases.map((el) => {
+      return <Case case={el} />
+    });
 
-const domCases = cases.map((el) => {
-  return <Case case={el} />
-});
-    const  {line} = this.props;
     return <div className="Line">
-    {domCases}
+      <HeaderCase header={header} />
+      {domCases}
     </div>
   }
 

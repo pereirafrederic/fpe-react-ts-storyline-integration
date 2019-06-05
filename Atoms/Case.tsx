@@ -1,5 +1,15 @@
 import React, { PureComponent, ReactNode } from 'react'
-import {ICase} from './Iinterface'
+import Icon from '@mdi/react'
+
+
+
+
+
+
+
+
+import {ICase, EtatLectureeMdi} from './Iinterface'
+
 interface IState { }
 interface IProps {
   case : ICase
@@ -13,9 +23,11 @@ class Case extends PureComponent<IProps, IState> {
 
     const  {id, etatLecture} = this.props.case;
     return <div className="Case">
-    {id}
-    {etatLecture}
+
+    <div className="Case__etat">
+         <Icon className="mdi-etat-icon" path={EtatLectureeMdi[etatLecture]} />
     </div>
+     </div>
   }
 
 

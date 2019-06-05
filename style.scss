@@ -1,3 +1,32 @@
-h1, p {
+h1, p, div {
   font-family: Lato;
+  display: flex;
+}
+
+
+.Story{
+  flex-direction: column;
+}
+
+.Case {
+      background-color: gray;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  border : 1px solid black;
+  flex-direction: columns;
+  .Case__etat{
+    text-transform: uppercase;
+    align-content: flex-end;
+    justify-content: flex-end;
+    .mdi-etat-icon{
+    
+      fill: white;
+      width: 25px;
+      height: 25px;
+    }
+
+  }
+
 }

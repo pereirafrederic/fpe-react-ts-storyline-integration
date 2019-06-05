@@ -18,27 +18,56 @@ class App extends Component<AppProps, AppState> {
       story: {
         lines: [
           {
+            header:
+            {
+              title: '1 janvier 2014'
+            }
+            ,
             cases: [
               {
                 id: 1,
-                etatLecture: EEtatLecture.Connu
-              },{
-                id: 2,
                 etatLecture: EEtatLecture.Inconnu
+              }, {
+                id: 2,
+                etatLecture: EEtatLecture.Nouveau
+              }, {
+                id: 3,
+                etatLecture: EEtatLecture.Connu
               }
-              
+
+            ]
+          },
+          {
+            header:
+            {
+              title: '3 janvier 2014'
+            }
+            ,
+            cases: [
+              {
+                id: 4,
+                etatLecture: EEtatLecture.Lu
+              }, {
+                id: 5,
+                etatLecture: EEtatLecture.EnCours
+              }
+
             ]
           }
         ],
-        columns :[]
+        columns: [
+        ]
       }
     };
   }
 
   render() {
     return (
-      <div>
-        {this.state.story.lines.map(line => <Line line={line} />)}
+      <div className="Story">
+
+        {}
+        {this.state.story.lines.map((line) => <Line line={line} />
+        )}
       </div>
     );
   }
