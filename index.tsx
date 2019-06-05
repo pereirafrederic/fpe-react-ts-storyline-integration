@@ -21,8 +21,8 @@ class App extends Component<AppProps, AppState> {
   cases : [
     {
       id: 1,
-      etatLecture : EEtatLecture
-    }
+      etatLecture : EEtatLecture.Connu
+          }
   ]
 }        
       ]

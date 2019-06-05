@@ -3,7 +3,7 @@ export  interface ICase {
   etatLecture:EEtatLecture
 }
 
-enum EEtatLecture {
+export enum EEtatLecture {
   Inconnu = 'INCONNU',
   Connu = 'CONNU',
   EnCours = 'EN_COURS',

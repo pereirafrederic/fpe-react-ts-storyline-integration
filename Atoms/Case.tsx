@@ -13,6 +13,7 @@ class Case extends PureComponent<IProps, IState> {
 
     const  {id, etatLecture} = this.props.case;
     return <div className="Case">
+    {id}
     {etatLecture}
     </div>
   }
