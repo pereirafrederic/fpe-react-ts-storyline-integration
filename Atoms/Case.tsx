@@ -5,15 +5,15 @@ interface IProps {
   case : ICase
  }
 
-class Line Case extends PureComponent<IProps, IState> {
+class Case extends PureComponent<IProps, IState> {
 
 
 
   render() {
 
-    const  {case} = this.props;
-    return <div className="Line">
-    {case.}
+    const  {id, etatLecture} = this.props.case;
+    return <div className="Case">
+    {etatLecture}
     </div>
   }
 

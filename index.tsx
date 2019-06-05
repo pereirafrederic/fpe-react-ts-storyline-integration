@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Line from './Molecules/Line';
 import {IStory} from './Organisms/Iinterface'
+
+import {EEtatLecture} from '../Atoms/Iinterface'
 import './style.css';
 
 interface AppProps { }
@@ -14,7 +16,16 @@ class App extends Component<AppProps, AppState> {
     super(props);
     this.state = {
     story :{
-      lines :[]
+      lines :[
+{ 
+  cases : [
+    {
+      id: 1,
+      etatLecture : EEtatLecture
+    }
+  ]
+}        
+      ]
     }
     };
   }
