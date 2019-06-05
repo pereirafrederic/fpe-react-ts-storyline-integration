@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Line from './Molecules/Line';
+import HeaderCase from './Atoms/HeaderCase';
 import { IStory } from './Organisms/Iinterface'
 
 import { EEtatLecture } from './Atoms/Iinterface'
@@ -55,7 +56,22 @@ class App extends Component<AppProps, AppState> {
             ]
           }
         ],
-        columns: [
+        columns: [{
+          header:
+          {
+            title: 'Terre '
+          }, cases: []
+        }, {
+          header:
+          {
+            title: 'Eau '
+          }, cases: []
+        }, {
+          header:
+          {
+            title: 'Feu '
+          }, cases: []
+        }
         ]
       }
     };
@@ -65,9 +81,11 @@ class App extends Component<AppProps, AppState> {
     return (
       <div className="Story">
 
-        {}
-        {this.state.story.lines.map((line) => <Line line={line} />
-        )}
+        <div className="columns_header">
+          {<HeaderCase header={} />}
+          {this.state.story.columns.map(column => <HeaderCase header={column.header} />)}
+        </div>
+        {this.state.story.lines.map((line) => <Line line={line} />)}
       </div>
     );
   }
