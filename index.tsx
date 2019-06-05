@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Line from './Molecules/Line';
 import {IStory} from './Organisms/Iinterface'
 
-import {EEtatLecture} from '../Atoms/Iinterface'
+import {EEtatLecture} from './Atoms/Iinterface'
 import './style.css';
 
 interface AppProps { }

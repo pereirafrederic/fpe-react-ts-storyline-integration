@@ -14,8 +14,8 @@ class Line extends PureComponent<IProps, IState> {
 
     const {cases } = this.props.line
 
-const domCases = cases.map((case) => {
-  return <Case case={case} />
+const domCases = cases.map((el) => {
+  return <Case case={el} />
 });
     const  {line} = this.props;
     return <div className="Line">
