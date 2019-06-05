@@ -7,7 +7,6 @@ import { IHeaderCase } from '../Atoms/Iinterface'
 interface IState { }
 interface IProps {
   line: ILine
-  header: IHeaderCase
 }
 
 class Line extends PureComponent<IProps, IState> {
@@ -16,8 +15,8 @@ class Line extends PureComponent<IProps, IState> {
 
   render() {
 
-    const { header } = this.props
-    const { cases } = this.props.line;
+  
+    const { cases, header } = this.props.line;
     const domCases = cases.map((el) => {
       return <Case case={el} />
     });

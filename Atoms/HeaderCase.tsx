@@ -22,7 +22,7 @@ class HeaderCase extends PureComponent<IProps, IState> {
   render() {
 
     const  {title} = this.props.header;
-    return <div className="HeaderCase">
+    return <div className="Case">
 
     <div className="HeaderCase__title">
          
