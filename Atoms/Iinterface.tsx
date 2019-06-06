@@ -1,13 +1,13 @@
 import { mdiEyeSettings, mdiEye, mdiEyeCheck, mdiEyePlus, mdiAccount, mdiEyeOff, mdiBookOpen, mdiBookOpenVariant } from '@mdi/js'
 
-export  interface ICase {
-  id : number
-  etatLecture:EEtatLecture
+export interface ICase {
+  id: number
+  etatLecture: EEtatLecture
   typeRecit: ETypeRecit
 }
 
-export  interface IHeaderCase {
-  title : string
+export interface IHeaderCase {
+  title: string
 }
 
 export enum ETypeRecit {
@@ -17,10 +17,19 @@ export enum ETypeRecit {
 }
 
 
-export const TypeRecitMdi:IEtatLectureeMdi =  {
-  [ETypeRecit.PointOfView] : mdiEyeOff,
-  [ETypeRecit.Tome] : mdiBookOpen,
-  [ETypeRecit.Chapiter] : mdiBookOpenVariant,
+export const TypeRecitMdi: IConfigMdi = {
+  [ETypeRecit.PointOfView]: {
+    logo: mdiAccount,
+    tooltip: 'Le point de vue de'
+  },
+  [ETypeRecit.Tome]: {
+    logo: mdiBookOpen,
+    tooltip: 'Le tome'
+  },
+  [ETypeRecit.Chapiter]: {
+    logo: mdiBookOpenVariant,
+    tooltip: 'Le Chapitre'
+  },
 }
 
 export enum EEtatLecture {
@@ -30,14 +39,30 @@ export enum EEtatLecture {
   EnCours = 'EN_COURS',
   Lu = 'LU',
 }
-interface IEtatLectureeMdi {
-  [key: string]: string
+
+interface IConfigItemMdi {
+  logo: string,
+  tooltip: string
 }
 
-export const EtatLectureeMdi:IEtatLectureeMdi =  {
-  [EEtatLecture.Inconnu] : mdiAccount,
-  [EEtatLecture.Nouveau] : mdiEyePlus,
-  [EEtatLecture.Connu] : mdiEye,
-  [EEtatLecture.EnCours] : mdiEyeSettings,
-  [EEtatLecture.Lu] : mdiEyeCheck
+interface IConfigMdi {
+  [key: string]: IConfigItemMdi
+}
+
+export const EtatLectureeMdi: IConfigMdi = {
+  [EEtatLecture.Inconnu]: {
+    logo: mdiEyeOff, tooltip: 'Le Chapitre'
+  },
+  [EEtatLecture.Nouveau]: {
+    logo: mdiEyePlus, tooltip: 'Le Chapitre'
+  },
+  [EEtatLecture.Connu]: {
+    logo: mdiEye, tooltip: 'Le Chapitre'
+  },
+  [EEtatLecture.EnCours]: {
+    logo: mdiEyeSettings, tooltip: 'Le Chapitre'
+  },
+  [EEtatLecture.Lu]: {
+    logo: mdiEyeCheck, tooltip: 'Le Chapitre'
+  },
 }
