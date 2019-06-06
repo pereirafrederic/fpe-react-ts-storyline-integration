@@ -10,6 +10,7 @@ import Icon from '@mdi/react'
 
 import {ICase, EtatLectureeMdi, TypeRecitMdi} from './Iinterface'
 import ReactTooltip from 'react-tooltip'
+import {findDOMNode} from 'react-dom'
 
 interface IState { }
 interface IProps {
@@ -25,18 +26,15 @@ class Case extends PureComponent<IProps, IState> {
     const  {id, etatLecture, typeRecit} = this.props.case;
     return <div className="Case">
               <div className="Case_border">
-                <div className="Case__typerecit" data-tip={TypeRecitMdi[typeRecit]['tooltip']}>
+               {TypeRecitMdi[typeRecit] && <div ref='typerecit' className="Case__typerecit" data-tip={TypeRecitMdi[typeRecit]['tooltip']} onClick={() => { ReactTooltip.hide(findDOMNode(this.refs.typerecit)) }}>
                     <Icon className="mdi-typerecit-icon" path={TypeRecitMdi[typeRecit]['logo']} />
-                </div>
+                </div>}
 
-                <div className="Case__etat" data-tip={EtatLectureeMdi[etatLecture]['tooltip']}>
+               {EtatLectureeMdi[etatLecture] && <div ref='etat' className="Case__etat" data-tip={EtatLectureeMdi[etatLecture]['tooltip']} onClick={() => { ReactTooltip.hide(findDOMNode(this.refs.etat)) }}>
                     <Icon className="mdi-etat-icon" path={EtatLectureeMdi[etatLecture]['logo']} />
-                </div>
+                </div>}
              </div>
-                 <div className="top left"></div>
-    <div className="top right"></div>
-    <div className="bottom left"></div>
-    <div className="bottom right"></div>
+                
              </div>
   }
 
