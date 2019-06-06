@@ -13,6 +13,7 @@ import {IHeaderCase} from './Iinterface'
 interface IState { }
 interface IProps {
   header?: IHeaderCase
+  isFristColumn: boolean
  }
 
 class HeaderCase extends PureComponent<IProps, IState> {
@@ -20,9 +21,9 @@ class HeaderCase extends PureComponent<IProps, IState> {
 
 
   render() {
-
-    const  {title} = this.props.header;
-    return <div className="Case">
+const  {header, isFristColumn} = this.props;
+    const  {title} = header;
+    return <div className={`CaseHeader ${isFristColumn? 'line' : ''}`}>
 
     <div className="HeaderCase__title">
          

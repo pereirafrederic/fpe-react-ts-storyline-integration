@@ -4,7 +4,7 @@ import Line from './Molecules/Line';
 import HeaderCase from './Atoms/HeaderCase';
 import { IStory } from './Organisms/Iinterface'
 
-import { EEtatLecture } from './Atoms/Iinterface'
+import { EEtatLecture, ETypeRecit } from './Atoms/Iinterface'
 import './style.scss';
 
 interface AppProps { }
@@ -17,6 +17,9 @@ class App extends Component<AppProps, AppState> {
     super(props);
     this.state = {
       story: {
+        header :{
+          title : 'book of love'
+        },
         lines: [
           {
             header:
@@ -27,6 +30,7 @@ class App extends Component<AppProps, AppState> {
             cases: [
               {
                 id: 1,
+                typeRecit: ETypeRecit.PointOfView,
                 etatLecture: EEtatLecture.Inconnu
               }, {
                 id: 2,
@@ -82,8 +86,8 @@ class App extends Component<AppProps, AppState> {
       <div className="Story">
 
         <div className="columns_header">
-          {<HeaderCase header={} />}
-          {this.state.story.columns.map(column => <HeaderCase header={column.header} />)}
+          {<HeaderCase header={this.state.story.header} isFristColumn ={true}/>}
+          {this.state.story.columns.map(column => <HeaderCase header={column.header} isFristColumn ={false}/>)}
         </div>
         {this.state.story.lines.map((line) => <Line line={line} />)}
       </div>

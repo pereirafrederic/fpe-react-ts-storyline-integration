@@ -1,12 +1,26 @@
-import { mdiEyeSettings, mdiEye, mdiEyeCheck, mdiEyePlus, mdiEyeOff } from '@mdi/js'
+import { mdiEyeSettings, mdiEye, mdiEyeCheck, mdiEyePlus, mdiAccount, mdiEyeOff, mdiBookOpen, mdiBookOpenVariant } from '@mdi/js'
 
 export  interface ICase {
   id : number
   etatLecture:EEtatLecture
+  typeRecit: ETypeRecit
 }
 
 export  interface IHeaderCase {
   title : string
+}
+
+export enum ETypeRecit {
+  PointOfView = 'POINT_OF_VIEW',
+  Tome = 'TOME',
+  Chapiter = 'CHAPITER',
+}
+
+
+export const TypeRecitMdi:IEtatLectureeMdi =  {
+  [ETypeRecit.PointOfView] : mdiEyeOff,
+  [ETypeRecit.Tome] : mdiBookOpen,
+  [ETypeRecit.Chapiter] : mdiBookOpenVariant,
 }
 
 export enum EEtatLecture {
@@ -21,7 +35,7 @@ interface IEtatLectureeMdi {
 }
 
 export const EtatLectureeMdi:IEtatLectureeMdi =  {
-  [EEtatLecture.Inconnu] : mdiEyeOff,
+  [EEtatLecture.Inconnu] : mdiAccount,
   [EEtatLecture.Nouveau] : mdiEyePlus,
   [EEtatLecture.Connu] : mdiEye,
   [EEtatLecture.EnCours] : mdiEyeSettings,

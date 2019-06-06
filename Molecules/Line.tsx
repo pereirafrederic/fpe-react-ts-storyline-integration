@@ -22,7 +22,7 @@ class Line extends PureComponent<IProps, IState> {
     });
 
     return <div className="Line">
-      <HeaderCase header={header} />
+      <HeaderCase header={header} isFristColumn ={true}/>
       {domCases}
     </div>
   }
