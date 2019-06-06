@@ -34,6 +34,7 @@ class App extends Component<AppProps, AppState> {
                 etatLecture: EEtatLecture.Inconnu
               }, {
                 id: 2,
+                    typeRecit: ETypeRecit.Tome,
                 etatLecture: EEtatLecture.Nouveau
               }, {
                 id: 3,
@@ -51,6 +52,7 @@ class App extends Component<AppProps, AppState> {
             cases: [
               {
                 id: 4,
+                typeRecit: ETypeRecit.Chapiter,
                 etatLecture: EEtatLecture.Lu
               }, {
                 id: 5,
