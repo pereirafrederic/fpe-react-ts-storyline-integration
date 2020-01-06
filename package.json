@@ -1,5 +1,5 @@
 {
-  "name": "react-ts",
+  "name": "fpe-storyline-integration",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -16,5 +16,7 @@
   },
   "devDependencies": {
     "react-scripts-ts": "latest"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
