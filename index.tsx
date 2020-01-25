@@ -1,42 +1,47 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Line from './Molecules/Line';
-import {IStory} from './Organisms/Iinterface'
+import React, { Component } from "react";
+import { render } from "react-dom";
+import Line from "./Molecules/Line";
+import { IStory } from "./Organisms/Iinterface";
 
-import {EEtatLecture} from '../Atoms/Iinterface'
-import './style.css';
+import { EEtatLecture } from "./Atoms/Iinterface";
+import "./style.scss";
 
-interface AppProps { }
+interface AppProps {}
 interface AppState {
-    story: IStory
+  story: IStory;
 }
 
 class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
-    story :{
-      lines :[
-{ 
-  cases : [
-    {
-      id: 1,
-      etatLecture : EEtatLecture
-    }
-  ]
-}        
-      ]
-    }
+      story: {
+        id: 1,
+        lines: [
+          {
+            id: 1,
+            cases: [
+              {
+                id: 1,
+                etatLecture: EEtatLecture.Connu
+              }
+            ]
+          }
+        ],
+        columns: []
+      }
     };
   }
 
   render() {
     return (
       <div>
-        {this.state.story.lines.map(line => <Line line={line} /> )}
+        {this.state.story.lines.map(line => (
+          <Line key={line.id} line={line} />
+        ))}
       </div>
     );
   }
 }
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));

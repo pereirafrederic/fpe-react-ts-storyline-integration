@@ -1,6 +1,6 @@
-
-import {ICase} from '../Atoms/Iinterface'
+import { ICase } from "../Atoms/Iinterface";
 
 export interface ILine {
-  cases: Array<ICase>
+  id: number;
+  cases: ICase[];
 }

@@ -1,7 +1,7 @@
+import { ILine } from "../Molecules/Iinterface";
 
-import {ILine} from '../Molecules/Iinterface'
-
-export  interface IStory{
-  lines : Array<ILine>
-  columns: Array<ILine>
+export interface IStory {
+  id: number;
+  lines: ILine[];
+  columns: ILine[];
 }
