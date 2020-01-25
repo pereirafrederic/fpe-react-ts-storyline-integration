@@ -1,4 +1,4 @@
-import React, { PureComponent, ReactNode } from "react";
+import React, { PureComponent } from "react";
 import { Card } from "antd";
 import { ICase } from "./Iinterface";
 interface IState {}

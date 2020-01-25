@@ -1,4 +1,4 @@
-import React, { PureComponent, ReactNode } from "react";
+import React, { PureComponent } from "react";
 import { ILine } from "./Iinterface";
 import Case from "../Molecules/Case";
 interface IState {}
@@ -12,7 +12,7 @@ class Line extends PureComponent<IProps, IState> {
     return (
       <div className="Line">
         {line.cases.map(value => (
-          <Case case={value} />
+          <Case key={value.id} case={value} />
         ))}
       </div>
     );
