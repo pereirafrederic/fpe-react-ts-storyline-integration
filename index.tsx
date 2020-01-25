@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Line from "./Molecules/Line";
-import { IStory } from "./Organisms/Iinterface";
+import Line from "./Organisms/Line";
+import { IStory } from "./Iinterface";
 
-import { EEtatLecture } from "./Atoms/Iinterface";
+import { EEtatLecture } from "./Molecules/Iinterface";
 import "./style.scss";
 
 interface AppProps {}

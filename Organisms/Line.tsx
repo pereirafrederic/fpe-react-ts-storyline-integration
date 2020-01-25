@@ -1,6 +1,6 @@
 import React, { PureComponent, ReactNode } from "react";
 import { ILine } from "./Iinterface";
-import Case from "../Atoms/Case";
+import Case from "../Molecules/Case";
 interface IState {}
 interface IProps {
   line: ILine;

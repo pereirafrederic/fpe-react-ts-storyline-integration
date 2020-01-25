@@ -1,6 +1,11 @@
-import { ICase } from "../Atoms/Iinterface";
-
-export interface ILine {
+export interface ICase {
   id: number;
-  cases: ICase[];
+  etatLecture: EEtatLecture;
+}
+
+export enum EEtatLecture {
+  Inconnu = "INCONNU",
+  Connu = "CONNU",
+  EnCours = "EN_COURS",
+  Lu = "LU"
 }

@@ -1,7 +1,11 @@
-import { ILine } from "../Molecules/Iinterface";
-
-export interface IStory {
+export interface ICase {
   id: number;
-  lines: ILine[];
-  columns: ILine[];
+  etatLecture: EEtatLecture;
+}
+
+export enum EEtatLecture {
+  Inconnu = "INCONNU",
+  Connu = "CONNU",
+  EnCours = "EN_COURS",
+  Lu = "LU"
 }

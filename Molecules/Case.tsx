@@ -1,4 +1,5 @@
 import React, { PureComponent, ReactNode } from "react";
+import { Card } from "antd";
 import { ICase } from "./Iinterface";
 interface IState {}
 interface IProps {
@@ -10,8 +11,9 @@ class Case extends PureComponent<IProps, IState> {
     const { id, etatLecture } = this.props.case;
     return (
       <div className="Case">
-        {id}
-        {etatLecture}
+        <Card title={id} style={{ width: 300 }}>
+          {etatLecture}
+        </Card>
       </div>
     );
   }
