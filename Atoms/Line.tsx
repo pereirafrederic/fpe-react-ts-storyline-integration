@@ -1,10 +1,6 @@
 import React, { PureComponent } from "react";
-import { ILine } from "./Iinterface";
-import Case from "../Molecules/Case";
 interface IState {}
-interface IProps {
-  line: ILine;
-}
+interface IProps {}
 
 class Line extends PureComponent<IProps, IState> {
   render() {

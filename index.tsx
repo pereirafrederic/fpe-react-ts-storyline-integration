@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import Line from "./Organisms/Line";
-import { IStory } from "./Iinterface";
 
-import { EEtatLecture } from "./Molecules/Iinterface";
+import { EnumEtatLecture } from "./Iinterface";
 import "./style.scss";
 
 interface AppProps {}
@@ -23,7 +22,7 @@ class App extends Component<AppProps, AppState> {
             cases: [
               {
                 id: 1,
-                etatLecture: EEtatLecture.EnCours
+                etatLecture: EnumEtatLecture.NON_OUVERT
               }
             ]
           }

@@ -1,6 +1,10 @@
 import React, { PureComponent } from "react";
 import { Card } from "antd";
-import { ICase } from "./Iinterface";
+export interface ICase {
+  id: number;
+  etatLecture: string;
+}
+
 interface IState {}
 interface IProps {
   case: ICase;
