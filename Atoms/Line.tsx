@@ -1,4 +1,6 @@
 import React, { PureComponent } from "react";
+
+import Case from "./Case";
 interface IState {}
 interface IProps {}
 

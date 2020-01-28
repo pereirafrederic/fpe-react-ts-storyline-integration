@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Line from "./Organisms/Line";
+import Line from "./Atoms/Line";
 
-import { EnumEtatLecture } from "./Iinterface";
+import { EnumEtatLecture, ILivre } from "./Iinterface";
 import "./style.scss";
 
 interface AppProps {}
 interface AppState {
-  story: IStory;
+  story: ILivre;
 }
 
 class App extends Component<AppProps, AppState> {
