@@ -1,0 +1,29 @@
+@import "~antd/dist/antd.scss";
+
+.row {
+  display: flex;
+  flex-direction: row;
+  @include colored;
+}
+
+h1,
+p {
+  font-family: Lato;
+}
+
+/*@mixin colored {
+  &.zero {
+    background-color: blue;
+    color: white;
+  }
+
+  &.negatif {
+    background-color: blue;
+    color: red;
+  }
+
+  &.positif {
+    background-color: blue;
+    color: green;
+  }
+}*/
