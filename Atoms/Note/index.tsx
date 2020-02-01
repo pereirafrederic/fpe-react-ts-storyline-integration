@@ -1,10 +1,9 @@
 import React from "react";
 
-import "./Note.scss";
+import "./Note.css";
+import { INotation } from "../../Iinterface";
 
-interface IProps {
-  note: Number;
-}
+interface IProps extends INotation {}
 
 export const Note = (props: IProps) => {
   const { note } = props;

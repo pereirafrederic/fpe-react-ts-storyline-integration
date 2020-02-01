@@ -1,0 +1,21 @@
+.Note {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.Note.positif {
+  color: green;
+  font-weight: bold;
+  line-height: 25px;
+}
+.Note.zero {
+  font-weight: bold;
+  line-height: 10px;
+}
+
+.Note.negatif {
+  color: red;
+  font-weight: bold;
+  line-height: 10px;
+}
