@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import "./style.scss";
 import { ILivre } from "./Iinterface";
 import { Don } from "./Atoms/Don";
-import { Nom } from "./Atoms/Nom";
+import { Identity } from "./Atoms/Identity";
 import { Note } from "./Atoms/Note";
 import { EtatAcces } from "./Atoms/EtatAcces";
 import { EnumAccess, EnumEtatLecture, EnumEtatEcriture } from "./Enumeration";
@@ -31,7 +31,7 @@ class App extends Component<AppProps, AppState> {
       <Fragment>
         <Don don={0} />
         <Divider />
-        <Nom nom="frederic" />
+        <Identity nom="frederic" />
         <Divider />
         <Note note={12} />
         <Divider />

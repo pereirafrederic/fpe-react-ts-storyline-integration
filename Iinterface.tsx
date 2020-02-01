@@ -1,6 +1,5 @@
 import { EnumEtatLecture, EnumEtatEcriture, EnumAccess } from "./Enumeration";
 
-
 //parents
 interface IID {
   id: number;
@@ -63,7 +62,7 @@ interface ITimeElement {
 }
 
 interface ITime extends IIdentity {
-  time: ITime;
+  time: ITimeElement;
   lectures: IEvenementLivre[];
   ecritures: IEvenementOeuvre[];
 }
