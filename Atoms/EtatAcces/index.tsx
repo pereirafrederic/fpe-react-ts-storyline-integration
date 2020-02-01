@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Icon } from "antd";
 import "./EtatAcces.scss";
-import { EnumAccess } from "../Enumeration";
+import { EnumAccess } from "../../Enumeration";
 
 interface IProps {
   etat: EnumAccess;

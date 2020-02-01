@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Icon } from "antd";
-import "./EtatLecture.scss";
-import { EnumEtatLecture } from "../Enumeration";
+
+import { EnumEtatLecture } from "../../Enumeration";
 
 interface IProps {
   etat: EnumEtatLecture;

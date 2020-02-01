@@ -1,19 +1,31 @@
-h1, p {
-  font-family: Lato;
-}
+
 
 @import '~antd/dist/antd.scss';
 
-#root{
-  background-color: red;
-}
-div {
-  background-color: yellow;
-}
 
-.row {
-  display: flex;
-  flex-direction: row;
+
+body{
+
+  div {
+    background-color: yellow;
+    
+  }
+  h1, p {
+    font-family: Lato;
+  }
+
+  #root{
+    background-color: red;
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      @include colored
+    }
+
+    
+  }
+
 }
 
 @mixin colored {
