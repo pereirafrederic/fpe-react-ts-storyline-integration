@@ -1,45 +1,25 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Line from "./Atoms/Line";
 
-import { EnumEtatLecture, ILivre } from "./Iinterface";
 import "./style.scss";
+import { ILivre } from "./Iinterface";
 
 interface AppProps {}
 interface AppState {
-  story: ILivre;
+  livre: ILivre;
 }
 
 class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
-      story: {
-        id: 1,
-        lines: [
-          {
-            id: 1,
-            cases: [
-              {
-                id: 1,
-                etatLecture: EnumEtatLecture.NON_OUVERT
-              }
-            ]
-          }
-        ],
-        columns: []
-      }
+      livre: null
     };
   }
 
   render() {
-    return (
-      <div>
-        {this.state.story.lines.map(line => (
-          <Line key={line.id} line={line} />
-        ))}
-      </div>
-    );
+    const { livre } = this.state;
+    return <div>{livre}</div>;
   }
 }
 
