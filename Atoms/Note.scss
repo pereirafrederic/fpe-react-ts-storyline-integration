@@ -1,0 +1,8 @@
+.Note {
+  background-color: red;
+  min-width: 100px;
+  min-height: 100px;
+  
+  @include colored;
+
+}

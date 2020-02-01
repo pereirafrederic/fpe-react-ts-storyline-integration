@@ -3,3 +3,32 @@ h1, p {
 }
 
 @import '~antd/dist/antd.scss';
+
+#root{
+  background-color: red;
+}
+div {
+  background-color: yellow;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin colored {
+  &.zero{
+    background-color: blue;
+    color: white;
+  }
+  
+  &.negatif{
+    background-color: blue;
+    color: red;
+  }
+  
+  &.positif {
+    background-color: blue;
+    color: green;
+  }
+}
