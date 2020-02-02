@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ILivre } from "../../../Iinterface";
-import { Identity } from "../Atoms/Identity";
-import { Note } from "../Atoms/Note";
+import { Identite } from "../../Identite";
+import { Note } from "./Note";
 
 interface IProps extends ILivre {}
 
@@ -13,8 +13,8 @@ export default class Livre extends Component<IProps, IState> {
 
     return (
       <div className="Livre">
-        <Identity nom={nom} />
-        <Identity nom={auteur.nom} />
+        <Identite nom={nom} />
+        <Identite nom={auteur.nom} />
         <Note note={note} />
         <div className="Livre__Thematiques">
           {thematique &&

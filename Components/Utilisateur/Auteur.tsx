@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { IAuteur } from "../../Iinterface";
-import { Identity } from "../Atoms/Identity";
-import { Note } from "../Atoms/Note";
+import { Identite } from "../Identite";
 
 interface IProps extends IAuteur {}
 
@@ -24,9 +23,9 @@ export default class Auteur extends Component<IProps, IState> {
 
     return (
       <div className="Auteur">
-        <Identity nom={pseudo} />
-        <Identity nom={`${nom} ${prenom} `} />
-        <Identity nom={email} />
+        <Identite nom={pseudo} />
+        <Identite nom={`${nom} ${prenom} `} />
+        <Identite nom={email} />
         {presentation && (
           <div className="Auteur__Presentation">
             {presentation && presentation.titre && (

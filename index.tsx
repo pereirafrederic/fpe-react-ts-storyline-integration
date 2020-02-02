@@ -1,21 +1,17 @@
 import React, { Component, Fragment } from "react";
 import { render } from "react-dom";
 
-import {
-  ILivre,
-  ICollectionLivre,
-  ICollectionLivrePossede
-} from "./Iinterface";
-import { Don } from "./Atoms/Don";
-import { Identity } from "./Atoms/Identity";
-import { Note } from "./Atoms/Note";
-import { EtatAcces } from "./Atoms/EtatAcces";
+import { ICollectionLivre, ICollectionLivrePossede } from "./Iinterface";
+import { Don } from "./Components/monetisation/Don";
+import { Identite } from "./Components/Identite";
+import { Note } from "./Components/Document/Livre/Note";
+import { EtatAcces } from "./Components/Autorisation/EtatAcces";
 import { EnumAccess, EnumEtatLecture, EnumEtatEcriture } from "./Enumeration";
-import { EtatLecture } from "./Atoms/EtatLecture";
-import { EtatEcriture } from "./Atoms/EtatEcriture";
-import { CollectionLivre } from "./Atoms1/CollectionLivre";
+import { EtatLecture } from "./Components/Document/Livre/EtatLecture";
+import { EtatEcriture } from "./Components/Document/Oeuvre/EtatEcriture";
+import { CollectionLivre } from "./Components/Document/Livre/CollectionLivre";
 import { Divider } from "antd";
-import { CollectionLivrePossedePossede } from "./Atoms1/CollectionLivrePossede";
+import { CollectionLivrePossedePossede } from "./Components/Document/Livre/CollectionLivrePossede";
 
 interface AppProps {}
 interface AppState {
@@ -58,7 +54,7 @@ class App extends Component<AppProps, AppState> {
       <Fragment>
         <Don don={0} />
         <Divider />
-        <Identity nom="frederic" id={1} dateCreation={new Date()} />
+        <Identite nom="frederic" id={1} dateCreation={new Date()} />
         <Divider />
         <Note note={12} />
         <Divider />

@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import { Icon } from "antd";
 
 import { EnumEtatLecture } from "../../../Enumeration";
-
 import { IEtatLecture } from "../../../Iinterface";
 
 interface IProps extends IEtatLecture {
