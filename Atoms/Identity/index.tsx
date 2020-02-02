@@ -1,10 +1,9 @@
 import React from "react";
 
-import "./Identity.scss";
+import "./Identity.css";
+import { IIdentity } from "../../Iinterface";
 
-interface IProps {
-  nom: String;
-}
+interface IProps extends IIdentity {}
 
 export const Identity = (props: IProps) => {
   const { nom } = props;

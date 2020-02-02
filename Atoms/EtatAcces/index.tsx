@@ -1,29 +1,53 @@
 import React, { ReactNode } from "react";
 import { Icon } from "antd";
-import "./EtatAcces.scss";
+import "./EtatAcces.css";
 import { EnumAccess } from "../../Enumeration";
+import { IEtatAcces } from "../../Iinterface";
 
-interface IProps {
-  etat: EnumAccess;
+interface IProps extends IEtatAcces {
+  iconFontSize: string;
 }
 
 export const EtatAcces = (props: IProps) => {
-  const { etat } = props;
+  const { etatAcces, iconFontSize } = props;
 
   let logo: ReactNode = null;
-  switch (etat) {
+  switch (etatAcces) {
     case EnumAccess.AUTORISE_LECTURE:
-      logo = <Icon type="eye" />;
+      logo = (
+        <Icon type="eye" style={{ fontSize: iconFontSize }} theme="twoTone" />
+      );
       break;
     case EnumAccess.NON_AUTORISE:
-      logo = <Icon type="eye-invisible" />;
+      logo = (
+        <Icon
+          type="eye-invisible"
+          style={{ fontSize: iconFontSize }}
+          theme="twoTone"
+          twoToneColor="orange"
+        />
+      );
       break;
     case EnumAccess.AUTORISE_ECRITURE:
-      logo = <Icon type="edit" />;
+      logo = (
+        <Icon
+          type="edit"
+          style={{ fontSize: iconFontSize }}
+          theme="twoTone"
+          twoToneColor="indigo"
+        />
+      );
       break;
     default:
-      logo = <Icon type="eye-invisible" />;
+      logo = (
+        <Icon
+          type="eye-invisible"
+          style={{ fontSize: iconFontSize }}
+          theme="twoTone"
+          twoToneColor="limegreen"
+        />
+      );
   }
 
-  return <div className={`EtatAcces ${etat}`}>{logo} </div>;
+  return <div className={`EtatAcces`}>{logo} </div>;
 };

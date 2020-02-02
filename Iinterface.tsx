@@ -1,106 +1,56 @@
 import { EnumEtatLecture, EnumEtatEcriture, EnumAccess } from "./Enumeration";
 
-//parents
+// Atome
 interface IID {
   id: number;
   dateCreation: Date;
 }
 
-interface IIdentity extends IID {
+export interface IIdentity {
   nom: string;
 }
 
-interface IFinancement {
+export interface IDon {
   don: number;
 }
 
-interface INotation {
+export interface INotation {
   note: number;
 }
 
-interface IEtatLecture {
+interface ICoordonneeBancaire {
+  rib: string;
+}
+
+export interface IEtatLecture {
   etatLecture: EnumEtatLecture;
 }
-interface IEtatEcriture {
+export interface IEtatEcriture {
   etatEcriture: EnumEtatEcriture;
 }
-interface IEtatAccess {
-  etatAccess: EnumAccess;
+export interface IEtatAcces {
+  etatAcces: EnumAccess;
 }
 
-//Liste
+//
 
-export interface ICollectionLivre extends IIdentity, IEtatLecture {
+export interface ICollectionLivrePossede extends IID, IIdentity, IEtatLecture {
+  livres: ILivrePossede[];
+}
+export interface ICollectionLivre extends IID, IIdentity, IEtatLecture {
   livres: ILivre[];
 }
 
-interface ICollectionOeuvre extends IIdentity, IEtatEcriture {
-  oeuvres: IOeuvreEcrit[];
+export interface ICollectionOeuvreEcrite extends IID, IIdentity, IEtatEcriture {
+  oeuvres: IOeuvreEcrite[];
 }
 
-interface IGroupeAuteur extends IIdentity {
+export interface ICollectionOeuvre extends IID, IIdentity, IEtatEcriture {
+  oeuvres: IOeuvre[];
+}
+
+export interface IGroupeAuteur extends IID, IIdentity {
   auteurs: IAuteur[];
-}
-
-//livre à lire
-
-export interface ILivre extends INotation, IIdentity {
-  auteur: IAuteur;
-  thematique: IThematique[];
-  contenu: IContenu2D;
-  lecteurs: ILecteur[];
-}
-
-interface IContenu2D {
-  timeLine: ITime[];
-  spaceColumn: IEspace[];
-}
-
-interface ITimeElement {
-  time: number;
-  parent: ITimeElement;
-}
-
-interface ITime extends IIdentity {
-  time: ITimeElement;
-  lectures: IEvenementLivre[];
-  ecritures: IEvenementOeuvre[];
-}
-
-interface IEspace extends IIdentity {
-  lectures: IEvenementLivre[];
-  ecritures: IEvenementOeuvre[];
-}
-
-interface IEvenementLivre extends INotation, IIdentity {
-  time: ITime; // parent
-  espace: IEspace; // parent
-  contenu: IEssai;
-}
-
-interface ILivreLu extends IEtatLecture {
-  livre: ILivre;
-}
-
-interface IMagasin {
-  auteurs: IAuteur[];
-  groupes: IGroupeAuteur[];
-  oeuvres: ILivre[];
-  collections: ICollectionOeuvre[];
-  thematiques: IThematique[];
-}
-
-//Oeuvre à ecrire
-
-interface IOeuvre extends IEtatEcriture {
-  thematique: IThematique[];
-  contenu: IContenu2D;
-}
-
-interface IEvenementOeuvre extends IEtatEcriture, IIdentity {
-  time: ITime; // parent
-  espace: IEspace; // parent
-  developpement: IDeveloppement;
 }
 
 interface IVersionning extends IEtatEcriture {
@@ -111,9 +61,71 @@ interface IEssai extends IEtatEcriture {
   contenu: string;
 }
 
-interface ITexte extends IVersionning {
-  version: IVersion; // parent
+interface IVersion extends IID, IVersionning {
+  //developpement: IDeveloppement; // parent
+  textes: ITexte[];
+}
 
+//rang 4
+
+export interface ILivre extends IID, INotation, IIdentity {
+  auteur: IAuteur;
+  thematique: IThematique[];
+  contenu: IContenu2D;
+  lecteurs: ILecteur[];
+}
+
+interface IContenu2D extends IID {
+  timeLine: ITime[];
+  spaceColumn: IEspace[];
+}
+
+interface ITimeElement extends IID {
+  time: number;
+  parent: ITimeElement;
+}
+
+interface ITime extends IIdentity, IID {
+  time: ITimeElement;
+  lectures: IEvenementLivre[];
+  ecritures: IEvenementOeuvre[];
+}
+
+interface IEspace extends IIdentity, IID {
+  lectures: IEvenementLivre[];
+  ecritures: IEvenementOeuvre[];
+}
+
+interface IEvenementLivre extends IID, INotation, IIdentity {
+  time: ITime; // parent
+  espace: IEspace; // parent
+  contenu: IEssai;
+}
+
+export interface ILivrePossede extends IID, IEtatLecture, ILivre {}
+
+export interface IMagasin {
+  auteurs: IAuteur[];
+  groupes: IGroupeAuteur[];
+  oeuvres: ILivre[];
+  collections: ICollectionOeuvreEcrite[];
+  thematiques: IThematique[];
+}
+
+//Oeuvre à ecrire
+
+export interface IOeuvre extends IID, IIdentity {
+  thematique: IThematique[];
+  contenu: IContenu2D;
+}
+
+interface IEvenementOeuvre extends IID, IEtatEcriture, IIdentity {
+  time: ITime; // parent
+  espace: IEspace; // parent
+  developpement: IDeveloppement;
+}
+
+interface ITexte extends IID, IVersionning {
   essai1: IEssai; //100
   essai2: IEssai; //200
   essai3: IEssai; // 500
@@ -123,23 +135,16 @@ interface ITexte extends IVersionning {
   essai7?: IEssai; // infini
 }
 
-interface IVersion extends IVersionning {
-  developpement: IDeveloppement; // parent
-  textes: ITexte[];
-}
-
-interface IDeveloppement extends IIdentity {
+interface IDeveloppement extends IID, IIdentity {
   version: IVersion;
   archives: IVersion[];
 }
 
-interface IOeuvreEcrit extends IEtatEcriture {
-  oeuvre: IOeuvre;
-}
+export interface IOeuvreEcrite extends IEtatEcriture, IOeuvre {}
 
 //utilisateur
 
-interface IUtilisateur extends IIdentity {
+interface IUtilisateur extends IID, IIdentity {
   pseudo: string;
   //nom déjà dans identity
   prenom: string;
@@ -147,24 +152,28 @@ interface IUtilisateur extends IIdentity {
   password: string;
 }
 
-interface ILecteur extends IAllFinancements {
-  utilisateur: IUtilisateur;
+interface ILecteur
+  extends IUtilisateur,
+    IFinancementsDonnees,
+    IFinancementsRecus {
   presentation: IPresentation;
-  lectures: ILivreLu[];
+  lectures: ILivrePossede[];
   souhaits: ILivre[];
   notation: ILivreNote[];
   accessLivres: IAccessLivre[];
   accessEvenement: IAccessEvenement[];
 }
 
-interface IAuteur extends IAllFinancements {
-  utilisateur: IUtilisateur;
+export interface IAuteur
+  extends IUtilisateur,
+    IFinancementsDonnees,
+    IFinancementsRecus {
   presentation: IPresentation;
-  oeuvres: IOeuvreEcrit[];
+  oeuvres: IOeuvreEcrite[];
   coordonneeBancaire: ICoordonneeBancaire;
 }
 
-interface IPresentation {
+export interface IPresentation {
   titre: string;
   sousTitre: string;
   description: string;
@@ -172,29 +181,29 @@ interface IPresentation {
 
 //financement
 
-interface ICoordonneeBancaire {
-  rib: string;
-}
-
-interface IAllFinancements {
+export interface IFinancementsDonnees {
   financementsAuteurs: IAuteurFinancement[];
   financementsOeuvres: IOeuvreFinancement[];
 }
 
-interface IOeuvreFinancement {
-  oeuvre: IOeuvre; // parent
-  dons: IFinancement[];
+export interface IFinancementsRecus {
+  financementsParLecteur: IFinancementParLecteur[];
+  financementsParAuteur: IAuteurFinancement[];
 }
-interface IAuteurFinancement {
-  auteur: IAuteur; // parent
-  dons: IFinancement[];
+
+interface IOeuvreFinancement extends IOeuvre {
+  dons: IDon[];
+}
+interface IAuteurFinancement extends IAuteur {
+  dons: IDon[];
+}
+interface IFinancementParLecteur extends ILecteur {
+  dons: IDon[];
 }
 
 //notation
 
-interface ILivreNote extends INotation {
-  livre: ILivreLu; //parent
-}
+export interface ILivreNote extends ILivrePossede, INotation {}
 
 //classification
 
@@ -208,22 +217,22 @@ export interface IThematique extends IIdentity {
 
 //access
 
-interface IAccessEvenement extends IEtatLecture, IEtatAccess {
+export interface IAccessEvenement extends IID, IEtatLecture, IEtatAcces {
   utilisateur: IUtilisateur;
   evenement: IEvenementLivre;
 }
 
-interface IAccessLivre extends IEtatLecture, IEtatAccess {
+export interface IAccessLivre extends IID, IEtatLecture, IEtatAcces {
   utilisateur: IUtilisateur;
   livre: ILivre;
 }
 
-interface IAccessTime extends IEtatAccess {
+export interface IAccesTime extends IID, IEtatAcces {
   utilisateur: IUtilisateur;
   espace: ITime;
 }
 
-interface IAccessEspace extends IEtatAccess {
+export interface IAccesEspace extends IID, IEtatAcces {
   utilisateur: IUtilisateur;
   espace: IEspace;
 }
