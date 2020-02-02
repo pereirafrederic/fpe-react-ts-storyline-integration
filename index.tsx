@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { render } from "react-dom";
 
-import "./style.css";
-
 import {
   ILivre,
   ICollectionLivre,
@@ -21,7 +19,6 @@ import { CollectionLivrePossedePossede } from "./Atoms1/CollectionLivrePossede";
 
 interface AppProps {}
 interface AppState {
-
   iconFontSize: string;
   collectionLivre1: ICollectionLivre;
   collectionLivre2: ICollectionLivrePossede;
@@ -55,7 +52,6 @@ class App extends Component<AppProps, AppState> {
   }
 
   render() {
-
     const { collectionLivre1, collectionLivre2, iconFontSize } = this.state;
 
     return (
@@ -126,7 +122,6 @@ class App extends Component<AppProps, AppState> {
         <div className="row">
           <CollectionLivre {...collectionLivre1} />
           <CollectionLivrePossedePossede {...collectionLivre2} />
-
         </div>
       </Fragment>
     );
