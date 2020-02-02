@@ -1,5 +1,5 @@
 import React from "react";
-import { ICollectionOeuvre } from "../Iinterface";
+import { ICollectionOeuvre } from "../../../Iinterface";
 
 interface IProps extends ICollectionOeuvre {}
 

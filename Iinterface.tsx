@@ -6,7 +6,7 @@ interface IID {
   dateCreation: Date;
 }
 
-export interface IIdentity {
+export interface IIdentite {
   nom: string;
 }
 
@@ -34,23 +34,22 @@ export interface IEtatAcces {
 
 //
 
-export interface ICollectionLivrePossede extends IID, IIdentity, IEtatLecture {
+export interface ICollectionLivrePossede extends IID, IIdentite, IEtatLecture {
   livres: ILivrePossede[];
 }
-export interface ICollectionLivre extends IID, IIdentity, IEtatLecture {
+export interface ICollectionLivre extends IID, IIdentite, IEtatLecture {
   livres: ILivre[];
 }
 
-export interface ICollectionOeuvreEcrite extends IID, IIdentity, IEtatEcriture {
+export interface ICollectionOeuvreEcrite extends IID, IIdentite, IEtatEcriture {
   oeuvres: IOeuvreEcrite[];
-
 }
 
-export interface ICollectionOeuvre extends IID, IIdentity, IEtatEcriture {
+export interface ICollectionOeuvre extends IID, IIdentite, IEtatEcriture {
   oeuvres: IOeuvre[];
 }
 
-export interface IGroupeAuteur extends IID, IIdentity {
+export interface IGroupeAuteur extends IID, IIdentite {
   auteurs: IAuteur[];
 }
 
@@ -69,7 +68,7 @@ interface IVersion extends IID, IVersionning {
 
 //rang 4
 
-export interface ILivre extends IID, INotation, IIdentity {
+export interface ILivre extends IID, INotation, IIdentite {
   auteur: IAuteur;
   thematique: IThematique[];
   contenu: IContenu2D;
@@ -86,26 +85,24 @@ interface ITimeElement extends IID {
   parent: ITimeElement;
 }
 
-interface ITime extends IIdentity, IID {
+interface ITime extends IIdentite, IID {
   time: ITimeElement;
   lectures: IEvenementLivre[];
   ecritures: IEvenementOeuvre[];
 }
 
-interface IEspace extends IIdentity, IID {
+interface IEspace extends IIdentite, IID {
   lectures: IEvenementLivre[];
   ecritures: IEvenementOeuvre[];
 }
 
-interface IEvenementLivre extends IID, INotation, IIdentity {
+interface IEvenementLivre extends IID, INotation, IIdentite {
   time: ITime; // parent
   espace: IEspace; // parent
   contenu: IEssai;
 }
 
-
 export interface ILivrePossede extends IID, IEtatLecture, ILivre {}
-
 
 export interface IMagasin {
   auteurs: IAuteur[];
@@ -117,12 +114,12 @@ export interface IMagasin {
 
 //Oeuvre à ecrire
 
-export interface IOeuvre extends IID, IIdentity {
+export interface IOeuvre extends IID, IIdentite {
   thematique: IThematique[];
   contenu: IContenu2D;
 }
 
-interface IEvenementOeuvre extends IID, IEtatEcriture, IIdentity {
+interface IEvenementOeuvre extends IID, IEtatEcriture, IIdentite {
   time: ITime; // parent
   espace: IEspace; // parent
   developpement: IDeveloppement;
@@ -146,13 +143,12 @@ interface ITexte extends IID, IVersionning {
   essai7?: IEssai; // infini
 }
 
-
 interface IVersion extends IVersionning {
   //developpement: IDeveloppement; // parent
   textes: ITexte[];
 }
 
-interface IDeveloppement extends IID, IIdentity {
+interface IDeveloppement extends IID, IIdentite {
   version: IVersion;
   archives: IVersion[];
 }
@@ -161,7 +157,7 @@ export interface IOeuvreEcrite extends IEtatEcriture, IOeuvre {}
 
 //utilisateur
 
-interface IUtilisateur extends IID, IIdentity {
+interface IUtilisateur extends IID, IIdentite {
   pseudo: string;
   //nom déjà dans identity
   prenom: string;
@@ -185,7 +181,6 @@ export interface IAuteur
   extends IUtilisateur,
     IFinancementsDonnees,
     IFinancementsRecus {
-
   presentation: IPresentation;
   oeuvres: IOeuvreEcrite[];
   coordonneeBancaire: ICoordonneeBancaire;
@@ -229,12 +224,11 @@ export interface IAuteurThematique extends IAuteur {
   thematiques: IThematique[];
 }
 
-export interface IThematique extends IIdentity {
+export interface IThematique extends IIdentite {
   livres: ILivre[];
 }
 
 //access
-
 
 export interface IAccessEvenement extends IID, IEtatLecture, IEtatAcces {
   utilisateur: IUtilisateur;
@@ -242,19 +236,16 @@ export interface IAccessEvenement extends IID, IEtatLecture, IEtatAcces {
 }
 
 export interface IAccessLivre extends IID, IEtatLecture, IEtatAcces {
-
   utilisateur: IUtilisateur;
   livre: ILivre;
 }
 
 export interface IAccesTime extends IID, IEtatAcces {
-
   utilisateur: IUtilisateur;
   espace: ITime;
 }
 
 export interface IAccesEspace extends IID, IEtatAcces {
-
   utilisateur: IUtilisateur;
   espace: IEspace;
 }

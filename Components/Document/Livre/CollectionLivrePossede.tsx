@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { ICollectionLivrePossede } from "../Iinterface";
+import { ICollectionLivrePossede } from "../../../Iinterface";
 
 interface IProps extends ICollectionLivrePossede {}
 
