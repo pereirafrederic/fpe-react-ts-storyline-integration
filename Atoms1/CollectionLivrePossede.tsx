@@ -5,7 +5,6 @@ interface IProps extends ICollectionLivrePossede {}
 
 export const CollectionLivrePossedePossede = (props: IProps) => {
   const { livres, nom } = props;
-
   return (
     <div className={`CollectionLivrePossede`}>
       <div className="row">

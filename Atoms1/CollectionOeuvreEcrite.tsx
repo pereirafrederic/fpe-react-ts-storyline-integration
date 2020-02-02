@@ -5,10 +5,12 @@ interface IProps extends ICollectionOeuvreEcrite {}
 
 export const CollectionOeuvreEcrite = (props: IProps) => {
   const { oeuvres, nom } = props;
+
   return (
     <div className={`CollectionOeuvreEcrite`}>
       <div className="row">
         <div className="CollectionOeuvreEcrite__icon" />
+
         <div className="CollectionOeuvreEcrite__nom">{nom}</div>
       </div>
       <div className="CollectionOeuvreEcrite__livres">
