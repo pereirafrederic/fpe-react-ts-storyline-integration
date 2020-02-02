@@ -1,12 +1,12 @@
 import { EnumEtatLecture, EnumEtatEcriture, EnumAccess } from "./Enumeration";
 
-//parents
+// Atome
 interface IID {
   id: number;
   dateCreation: Date;
 }
 
-export interface IIdentity extends IID {
+export interface IIdentity {
   nom: string;
 }
 
@@ -16,6 +16,10 @@ export interface IDon {
 
 export interface INotation {
   note: number;
+}
+
+interface ICoordonneeBancaire {
+  rib: string;
 }
 
 export interface IEtatLecture {
@@ -28,66 +32,82 @@ export interface IEtatAcces {
   etatAcces: EnumAccess;
 }
 
-//Liste
+//
 
-export interface ICollectionLivrePossede extends IIdentity, IEtatLecture {
+export interface ICollectionLivrePossede extends IID, IIdentity, IEtatLecture {
   livres: ILivrePossede[];
 }
-export interface ICollectionLivre extends IIdentity, IEtatLecture {
+export interface ICollectionLivre extends IID, IIdentity, IEtatLecture {
   livres: ILivre[];
 }
 
-export interface ICollectionOeuvreEcrite extends IIdentity, IEtatEcriture {
+export interface ICollectionOeuvreEcrite extends IID, IIdentity, IEtatEcriture {
   oeuvres: IOeuvreEcrite[];
+
 }
 
-export interface ICollectionOeuvre extends IIdentity, IEtatEcriture {
+export interface ICollectionOeuvre extends IID, IIdentity, IEtatEcriture {
   oeuvres: IOeuvre[];
 }
 
-interface IGroupeAuteur extends IIdentity {
+export interface IGroupeAuteur extends IID, IIdentity {
   auteurs: IAuteur[];
 }
 
-//livre à lire
+interface IVersionning extends IEtatEcriture {
+  numero: number;
+}
 
-export interface ILivre extends INotation, IIdentity {
+interface IEssai extends IEtatEcriture {
+  contenu: string;
+}
+
+interface IVersion extends IID, IVersionning {
+  //developpement: IDeveloppement; // parent
+  textes: ITexte[];
+}
+
+//rang 4
+
+export interface ILivre extends IID, INotation, IIdentity {
   auteur: IAuteur;
   thematique: IThematique[];
   contenu: IContenu2D;
   lecteurs: ILecteur[];
 }
 
-interface IContenu2D {
+interface IContenu2D extends IID {
   timeLine: ITime[];
   spaceColumn: IEspace[];
 }
 
-interface ITimeElement {
+interface ITimeElement extends IID {
   time: number;
   parent: ITimeElement;
 }
 
-interface ITime extends IIdentity {
+interface ITime extends IIdentity, IID {
   time: ITimeElement;
   lectures: IEvenementLivre[];
   ecritures: IEvenementOeuvre[];
 }
 
-interface IEspace extends IIdentity {
+interface IEspace extends IIdentity, IID {
   lectures: IEvenementLivre[];
   ecritures: IEvenementOeuvre[];
 }
 
-interface IEvenementLivre extends INotation, IIdentity {
+interface IEvenementLivre extends IID, INotation, IIdentity {
   time: ITime; // parent
   espace: IEspace; // parent
   contenu: IEssai;
 }
 
-interface ILivrePossede extends IEtatLecture, ILivre {}
 
-interface IMagasin {
+export interface ILivrePossede extends IID, IEtatLecture, ILivre {}
+
+
+export interface IMagasin {
   auteurs: IAuteur[];
   groupes: IGroupeAuteur[];
   oeuvres: ILivre[];
@@ -97,12 +117,12 @@ interface IMagasin {
 
 //Oeuvre à ecrire
 
-export interface IOeuvre extends IEtatEcriture, IIdentity {
+export interface IOeuvre extends IID, IIdentity {
   thematique: IThematique[];
   contenu: IContenu2D;
 }
 
-interface IEvenementOeuvre extends IEtatEcriture, IIdentity {
+interface IEvenementOeuvre extends IID, IEtatEcriture, IIdentity {
   time: ITime; // parent
   espace: IEspace; // parent
   developpement: IDeveloppement;
@@ -116,7 +136,7 @@ interface IEssai extends IEtatEcriture {
   contenu: string;
 }
 
-interface ITexte extends IVersionning {
+interface ITexte extends IID, IVersionning {
   essai1: IEssai; //100
   essai2: IEssai; //200
   essai3: IEssai; // 500
@@ -126,12 +146,13 @@ interface ITexte extends IVersionning {
   essai7?: IEssai; // infini
 }
 
+
 interface IVersion extends IVersionning {
   //developpement: IDeveloppement; // parent
   textes: ITexte[];
 }
 
-interface IDeveloppement extends IIdentity {
+interface IDeveloppement extends IID, IIdentity {
   version: IVersion;
   archives: IVersion[];
 }
@@ -140,7 +161,7 @@ export interface IOeuvreEcrite extends IEtatEcriture, IOeuvre {}
 
 //utilisateur
 
-interface IUtilisateur extends IIdentity {
+interface IUtilisateur extends IID, IIdentity {
   pseudo: string;
   //nom déjà dans identity
   prenom: string;
@@ -148,7 +169,10 @@ interface IUtilisateur extends IIdentity {
   password: string;
 }
 
-interface ILecteur extends IUtilisateur, IAllFinancements {
+interface ILecteur
+  extends IUtilisateur,
+    IFinancementsDonnees,
+    IFinancementsRecus {
   presentation: IPresentation;
   lectures: ILivrePossede[];
   souhaits: ILivre[];
@@ -157,13 +181,17 @@ interface ILecteur extends IUtilisateur, IAllFinancements {
   accessEvenement: IAccessEvenement[];
 }
 
-interface IAuteur extends IUtilisateur, IAllFinancements {
+export interface IAuteur
+  extends IUtilisateur,
+    IFinancementsDonnees,
+    IFinancementsRecus {
+
   presentation: IPresentation;
   oeuvres: IOeuvreEcrite[];
   coordonneeBancaire: ICoordonneeBancaire;
 }
 
-interface IPresentation {
+export interface IPresentation {
   titre: string;
   sousTitre: string;
   description: string;
@@ -171,13 +199,14 @@ interface IPresentation {
 
 //financement
 
-interface ICoordonneeBancaire {
-  rib: string;
-}
-
-interface IAllFinancements {
+export interface IFinancementsDonnees {
   financementsAuteurs: IAuteurFinancement[];
   financementsOeuvres: IOeuvreFinancement[];
+}
+
+export interface IFinancementsRecus {
+  financementsParLecteur: IFinancementParLecteur[];
+  financementsParAuteur: IAuteurFinancement[];
 }
 
 interface IOeuvreFinancement extends IOeuvre {
@@ -186,10 +215,13 @@ interface IOeuvreFinancement extends IOeuvre {
 interface IAuteurFinancement extends IAuteur {
   dons: IDon[];
 }
+interface IFinancementParLecteur extends ILecteur {
+  dons: IDon[];
+}
 
 //notation
 
-interface ILivreNote extends ILivrePossede, INotation {}
+export interface ILivreNote extends ILivrePossede, INotation {}
 
 //classification
 
@@ -203,22 +235,26 @@ export interface IThematique extends IIdentity {
 
 //access
 
-interface IAccessEvenement extends IEtatLecture, IEtatAcces {
+
+export interface IAccessEvenement extends IID, IEtatLecture, IEtatAcces {
   utilisateur: IUtilisateur;
   evenement: IEvenementLivre;
 }
 
-interface IAccessLivre extends IEtatLecture, IEtatAcces {
+export interface IAccessLivre extends IID, IEtatLecture, IEtatAcces {
+
   utilisateur: IUtilisateur;
   livre: ILivre;
 }
 
-interface IAccessTime extends IEtatAcces {
+export interface IAccesTime extends IID, IEtatAcces {
+
   utilisateur: IUtilisateur;
   espace: ITime;
 }
 
-interface IAccessEspace extends IEtatAcces {
+export interface IAccesEspace extends IID, IEtatAcces {
+
   utilisateur: IUtilisateur;
   espace: IEspace;
 }
