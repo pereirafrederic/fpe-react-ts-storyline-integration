@@ -4,10 +4,10 @@ interface IProps {}
 
 interface IState {}
 
-export default class Thematique extends Component<IProps, IState> {
+export default class AccesEvenement extends Component<IProps, IState> {
   render() {
     const {} = this.props;
 
-    return <div className="Thematique"></div>;
+    return <div className="AccesEvenement"></div>;
   }
 }

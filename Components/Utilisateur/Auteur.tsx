@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { IAuteur } from "../../Iinterface";
 import { Identite } from "../Identite";
-
+import FinancementsRecus from "../monetisation/FinancementsRecus";
+import FinancementsDonnees from "../monetisation/FinancementsDonnees";
+import OeuvreEcrite from "../Document/Oeuvre/OeuvreEcrite";
+import Oeuvre from "../Document/Oeuvre/Oeuvre";
+import Presentation from "./Presentation";
 interface IProps extends IAuteur {}
 
 interface IState {}
@@ -15,6 +19,7 @@ export default class Auteur extends Component<IProps, IState> {
       email,
       presentation,
       oeuvres,
+      oeuvresEcrite,
       financementsAuteurs,
       financementsOeuvres,
       financementsParAuteur,
@@ -26,83 +31,25 @@ export default class Auteur extends Component<IProps, IState> {
         <Identite nom={pseudo} />
         <Identite nom={`${nom} ${prenom} `} />
         <Identite nom={email} />
-        {presentation && (
-          <div className="Auteur__Presentation">
-            {presentation && presentation.titre && (
-              <div className="Auteur__Presentation__titre">
-                {presentation.titre}
-              </div>
-            )}
-            {presentation && presentation.sousTitre && (
-              <div className="Auteur__Presentation__sousTitre">
-                {presentation.sousTitre}
-              </div>
-            )}
-            {presentation && presentation.description && (
-              <div className="Auteur__Presentation__description">
-                {presentation.description}
-              </div>
-            )}
-          </div>
-        )}
-        <div className="Livre__Oeuvres">
-          {oeuvres && oeuvres.map(oeuvre => <div>{oeuvre.nom}</div>)}
+        <Presentation {...presentation} />
+
+        <div className="Auteur__Oeuvres">
+          {oeuvres && oeuvres.map(oeuvre => <Oeuvre {...oeuvre} />)}
         </div>
-        <div className="Livre__Financement">
-          {financementsAuteurs && (
-            <div className="Livre__Financement__Auteurs">
-              {financementsAuteurs.map(financementsAuteur => (
-                <div className="Livre__Financement__Auteurs__Don">
-                  <div className="Livre__Financement__Auteurs__Don__beneficiaire">
-                    {`bénéficiaire : ${financementsAuteur.nom} ${financementsAuteur.prenom}`}
-                  </div>
-                  <div className="Livre__Financement__Auteurs__Don__dons">
-                    {financementsAuteur.dons.map(don => (
-                      <div className="Livre__Financement__Auteurs__Don__dons__don">
-                        <div className="">{`Don de ${don} €`}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          {financementsOeuvres && (
-            <div className="Livre__Financement__Oeuvre">
-              {financementsOeuvres.map(financementsOeuvre => (
-                <div />
-              ))}
-            </div>
-          )}
+        <div className="Auteur__oeuvresEcrite">
+          {oeuvresEcrite &&
+            oeuvresEcrite.map(oeuvreEcrite => (
+              <OeuvreEcrite {...oeuvreEcrite} />
+            ))}
         </div>
-        <div className="Livre__Financement_par">
-          {financementsParAuteur && (
-            <div className="Livre__Financement_par__Auteurs">
-              {financementsParAuteur.map(financementParAuteur => (
-                <div className="Livre__Financement_par__Auteurs__Don">
-                  <div className="Livre__Financement_par__Auteurs__Don__beneficiaire">
-                    {`Donateur : ${financementParAuteur.nom} ${financementParAuteur.prenom}`}
-                  </div>
-                  <div className="Livre__Financement_par__Auteurs__Don__dons">
-                    {financementParAuteur.dons.map(don => (
-                      <div className="Livre__Financement_par__Auteurs__Don__dons__don">
-                        <div className="">{`Don de ${don} €`}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-              ))}
-            </div>
-          )}
-          {financementsParLecteur && (
-            <div className="Livre__Financement_par__Lecteurs">
-              {financementsParLecteur.map(financementParLecteur => (
-                <div />
-              ))}
-            </div>
-          )}
-        </div>
+        <FinancementsDonnees
+          financementsAuteurs={financementsAuteurs}
+          financementsOeuvres={financementsOeuvres}
+        />
+        <FinancementsRecus
+          financementsParLecteur={financementsParAuteur}
+          financementsParAuteur={financementsParLecteur}
+        />
       </div>
     );
   }

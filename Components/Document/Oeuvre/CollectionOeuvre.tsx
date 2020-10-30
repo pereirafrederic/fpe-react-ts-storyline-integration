@@ -8,9 +8,7 @@ export const CollectionOeuvre = (props: IProps) => {
   return (
     <div className={`CollectionOeuvre`}>
       <div className="row">
-        <div className="CollectionOeuvre__icon">
-          <RedCollection />
-        </div>
+        <div className="CollectionOeuvre__icon"></div>
         <div className="CollectionOeuvre__nom">{nom}</div>
       </div>
       <div className="CollectionOeuvre__livres">

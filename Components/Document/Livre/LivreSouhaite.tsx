@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { ILivrePossede } from "../../../Iinterface";
+import { ILivre } from "../../../Iinterface";
 
-interface IProps extends ILivrePossede {}
+interface IProps extends ILivre {}
 
 interface IState {}
 

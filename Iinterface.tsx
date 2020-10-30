@@ -165,14 +165,11 @@ interface IUtilisateur extends IID, IIdentite {
   password: string;
 }
 
-interface ILecteur
-  extends IUtilisateur,
-    IFinancementsDonnees,
-    IFinancementsRecus {
+export interface ILecteur extends IUtilisateur, IFinancementsDonnees {
   presentation: IPresentation;
-  lectures: ILivrePossede[];
+  livresNonNote: ILivrePossede[];
   souhaits: ILivre[];
-  notation: ILivreNote[];
+  livresNote: ILivreNote[];
   accessLivres: IAccessLivre[];
   accessEvenement: IAccessEvenement[];
 }
@@ -182,7 +179,8 @@ export interface IAuteur
     IFinancementsDonnees,
     IFinancementsRecus {
   presentation: IPresentation;
-  oeuvres: IOeuvreEcrite[];
+  oeuvres: IOeuvre[];
+  oeuvresEcrite: IOeuvreEcrite[];
   coordonneeBancaire: ICoordonneeBancaire;
 }
 
